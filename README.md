@@ -54,3 +54,12 @@ simple-一个最简单的单页应用模板。
 ``
 
 ## 4,Vue-cli的模板
+
+1. main.js是整个项目的入口文件,在src文件夹下,引入App组件(import App from './App')
+2. *.vue是vue组件文件,App.vue分为三个部分,template,script,style(加上scoped属性可以让css只在当前组件内生效);router-view标签作为容器关联路由文件(只适用于单页面应用)
+3. router/index.js路由文件内引入components/helloword.vue(实际的业务内容)
+4. 一般拿到vue的spa项目先从src下main.js文件开始阅读,然后根据引入组件以及router文件夹下的路由文件来分模块了解
+
+## 5,开发模式
+
+1. $ npm run dev 即可进入开发模式package.json里可以查看相关的配置(dev,start,build)
