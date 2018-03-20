@@ -10,11 +10,11 @@
 1. $ vue init <template-name> <project-name>  管理员模式启动命令行可避免部分报错
 2. <template-name>：表示模板名称，vue-cli官方提供了5种模板;<project-name>：标识项目名称
 
-webpack-一个全面的webpack+vue-loader的模板，功能包括热加载，linting,检测和CSS扩展。
-webpack-simple-一个简单webpack+vue-loader的模板，不包含其他功能，让你快速的搭建vue的开发环境。
-browserify-一个全面的Browserify+vueify 的模板，功能包括热加载，linting,单元检测。
-browserify-simple-一个简单Browserify+vueify的模板，不包含其他功能，让你快速的搭建vue的开发环境。
-simple-一个最简单的单页应用模板。
+* webpack-一个全面的webpack+vue-loader的模板，功能包括热加载，linting,检测和CSS扩展。
+* webpack-simple-一个简单webpack+vue-loader的模板，不包含其他功能，让你快速的搭建vue的开发环境。
+* browserify-一个全面的Browserify+vueify 的模板，功能包括热加载，linting,单元检测。
+* browserify-simple-一个简单Browserify+vueify的模板，不包含其他功能，让你快速的搭建vue的开发环境。
+* simple-一个最简单的单页应用模板。
 
 3. Karma + Mocha -- 单元测试工具;Nightwatch -- e2e用户行为模拟测试
 4. 安装完成之后 cd到项目目录
