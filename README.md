@@ -21,7 +21,7 @@ simple-一个最简单的单页应用模板。
 5. $ npm run dev 可启动预览
 
 ## 3,Vue-cli项目结构
-
+<pre>
 ``
 |-- build                            // 项目构建(webpack)相关代码
 |   |-- build.js                     // 生产环境构建代码
@@ -52,7 +52,7 @@ simple-一个最简单的单页应用模板。
 |-- package.json                     // 项目基本信息
 |-- README.md                        // 项目说明
 ``
-
+</pre>
 ## 4,Vue-cli的模板
 
 1. main.js是整个项目的入口文件,在src文件夹下,引入App组件(import App from './App')
