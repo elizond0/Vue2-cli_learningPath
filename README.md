@@ -56,10 +56,75 @@
 ## 4,Vue-cli的模板
 
 1. main.js是整个项目的入口文件,在src文件夹下,引入App组件(import App from './App')
-2. *.vue是vue组件文件,App.vue分为三个部分,template,script,style(加上scoped属性可以让css只在当前组件内生效);router-view标签作为容器关联路由文件(只适用于单页面应用)
+2. *.vue是vue组件文件,App.vue分为三个部分,template,script,style(加上scoped属性可以让css只在当前组件内生效);router-view标签作为容器关联路由文件(只适用于单页面应用),单双标签都可以
 3. router/index.js路由文件内引入components/helloword.vue(实际的业务内容)
 4. 一般拿到vue的spa项目先从src下main.js文件开始阅读,然后根据引入组件以及router文件夹下的路由文件来分模块了解
 
 ## 5,开发模式
 
 1. $ npm run dev 即可进入开发模式package.json里可以查看相关的配置(dev,start,build)
+
+
+## 6,vue-router新建路由
+
+1. 在components/下新建组件(test1.vue)
+2. 在router/index.js里引入test1.vue,并为其配置路由
+3. 然后就能在浏览器里打开了 http://localhost:8080/#/test1
+4. router-link是vue内置组件,可以用于制作导航
+5. new Router的时候可以设置mode,'history'可以去除浏览器地址栏中的'#'
+
+## 7,vue-router子路由
+
+1. 在components/下建立相应组件
+2. 在router/index.js引入组件(注意import的顺序),并配置路由,子路由有略微区别,通过children扩展
+
+## 8,vue-router参数传递
+
+1. name传参:{{$route.name}}
+2. router-link传参:
+* 绑定router-link 标签中的to(即router-link :to='{}')
+* 传入对象{name:(需要与路由文件中的name对应)},params:{user:'hhh',id:'123'}}
+* 在需要参数的组件内,用{{$route.params.id}}接收
+3. 利用url传递参数:
+* 路由文件内import引入所需组件,配置路径path,用":"冒号绑定参数,此处可以使用正则对url传值进行匹配"/params/:name(reg)"
+* 所需组件如params.vue,{{$route.params.num}}接受参数
+* router-link标签属性to="/params/123/hhh",设置触发容器
+
+## 9,单页面多路由
+
+1. 新增router-view标签,并配置name属性,如果不设置name则为default对应的组件
+2. 在index.js(路由文件)中,引入需要的组件,components新增键值对(key:value),此处注意组件的复数
+
+## 10,重定向redirect与alias别名
+
+1. 路由文件新增路径,redirect:'**',内配置想要跳转的路径
+2. alias:'**',引号内设置要跳转的路径
+3. redirect和alias的区别,alias在浏览器地址栏保留path里的内容
+4. alias更友好,
+
+## 11,错误404页面配置
+
+1. 新建404页面组件,在路由文件配置{path:'*',component:error}
+2. 值得注意的是,传参页面如果没有进行正则匹配,那就不会进入404错误页面
+
+## 12,路由的过渡动画
+
+1. 需要在router-view外部用transition标签包裹,transition name="fade" mode="out-in",fade可以改成别的,mode模式是进出顺序
+2. 组件过渡过程中，会有四个CSS类名进行切换,类名与transition的name属性相关
+* [name]-enter:进入过渡的开始状态，元素被插入时生效，只应用一帧后立刻删除
+* [name]-enter-active:进入过渡的结束状态，元素被插入时就生效，在过渡过程完成后移除
+* [name]-leave:离开过渡的开始状态，元素被删除时触发，只应用一帧后立刻删
+* [name]-leave-active:离开过渡的结束状态，元素被删除时生效，离开过渡完成后被删除
+3. 在组件内写css3过渡动画样式,
+
+## 13,路由中的钩子
+
+* 方法一.路由文件里配置beforeEnter
+* 方法二.组件文件里配置beforeRouteEnter,beforeRouteLeave
+* 钩子调试,模块功能开关等等 
+
+## 14,编程式导航(与router-link不同)
+
+*  组件文件配置,export default新增methods方法,利用this.$router.go(-1)或this.$router.push('***')
+
+======
