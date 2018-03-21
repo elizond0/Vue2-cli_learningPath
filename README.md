@@ -126,5 +126,3 @@
 ## 14,编程式导航(与router-link不同)
 
 *  组件文件配置,export default新增methods方法,利用this.$router.go(-1)或this.$router.push('***')
-
-======
