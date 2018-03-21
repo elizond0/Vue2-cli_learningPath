@@ -70,6 +70,7 @@ simple-一个最简单的单页应用模板。
 2. 在router/index.js里引入test1.vue,并为其配置路由
 3. 然后就能在浏览器里打开了 http://localhost:8080/#/test1
 4. router-link是vue内置组件,可以用于制作导航
+5. new Router的时候可以设置mode,'history'可以去除浏览器地址栏中的'#'
 
 ## 7,vue-router子路由
 
@@ -92,4 +93,36 @@ simple-一个最简单的单页应用模板。
 
 1. 新增router-view标签,并配置name属性,如果不设置name则为default对应的组件
 2. 在index.js(路由文件)中,引入需要的组件,components新增键值对(key:value),此处注意组件的复数
+
+## 10,重定向redirect与alias别名
+
+1. 路由文件新增路径,redirect:'**',内配置想要跳转的路径
+2. alias:'**',引号内设置要跳转的路径
+3. redirect和alias的区别,alias在浏览器地址栏保留path里的内容
+4. alias更友好,
+
+## 11,错误404页面配置
+
+1. 新建404页面组件,在路由文件配置{path:'*',component:error}
+2. 值得注意的是,传参页面如果没有进行正则匹配,那就不会进入404错误页面
+
+## 12,路由的过渡动画
+
+1. 需要在router-view外部用transition标签包裹,transition name="fade" mode="out-in",fade可以改成别的,mode模式是进出顺序
+2. 组件过渡过程中，会有四个CSS类名进行切换,类名与transition的name属性相关
+* [name]-enter:进入过渡的开始状态，元素被插入时生效，只应用一帧后立刻删除
+* [name]-enter-active:进入过渡的结束状态，元素被插入时就生效，在过渡过程完成后移除
+* [name]-leave:离开过渡的开始状态，元素被删除时触发，只应用一帧后立刻删
+* [name]-leave-active:离开过渡的结束状态，元素被删除时生效，离开过渡完成后被删除
+3. 在组件内写css3过渡动画样式,
+
+## 13,路由中的钩子
+
+* 方法一.路由文件里配置beforeEnter
+* 方法二.组件文件里配置beforeRouteEnter,beforeRouteLeave
+* 钩子调试,模块功能开关等等 
+
+## 14,编程式导航(与router-link不同)
+
+*  组件文件配置,export default新增methods方法,利用this.$router.go(-1)或this.$router.push('***')
 
