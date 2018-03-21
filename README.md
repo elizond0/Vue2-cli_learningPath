@@ -56,10 +56,40 @@ simple-一个最简单的单页应用模板。
 ## 4,Vue-cli的模板
 
 1. main.js是整个项目的入口文件,在src文件夹下,引入App组件(import App from './App')
-2. *.vue是vue组件文件,App.vue分为三个部分,template,script,style(加上scoped属性可以让css只在当前组件内生效);router-view标签作为容器关联路由文件(只适用于单页面应用)
+2. *.vue是vue组件文件,App.vue分为三个部分,template,script,style(加上scoped属性可以让css只在当前组件内生效);router-view标签作为容器关联路由文件(只适用于单页面应用),单双标签都可以
 3. router/index.js路由文件内引入components/helloword.vue(实际的业务内容)
 4. 一般拿到vue的spa项目先从src下main.js文件开始阅读,然后根据引入组件以及router文件夹下的路由文件来分模块了解
 
 ## 5,开发模式
 
 1. $ npm run dev 即可进入开发模式package.json里可以查看相关的配置(dev,start,build)
+
+## 6,vue-router新建路由
+
+1. 在components/下新建组件(test1.vue)
+2. 在router/index.js里引入test1.vue,并为其配置路由
+3. 然后就能在浏览器里打开了 http://localhost:8080/#/test1
+4. router-link是vue内置组件,可以用于制作导航
+
+## 7,vue-router子路由
+
+1. 在components/下建立相应组件
+2. 在router/index.js引入组件(注意import的顺序),并配置路由,子路由有略微区别,通过children扩展
+
+## 8,vue-router参数传递
+
+1. name传参:{{$route.name}}
+2. router-link传参:
+* 绑定router-link 标签中的to(即router-link :to='{}')
+* 传入对象{name:(需要与路由文件中的name对应)},params:{user:'hhh',id:'123'}}
+* 在需要参数的组件内,用{{$route.params.id}}接收
+3. 利用url传递参数:
+* 路由文件内import引入所需组件,配置路径path,用":"冒号绑定参数,此处可以使用正则对url传值进行匹配"/params/:name(reg)"
+* 所需组件如params.vue,{{$route.params.num}}接受参数
+* router-link标签属性to="/params/123/hhh",设置触发容器
+
+## 9,单页面多路由
+
+1. 新增router-view标签,并配置name属性,如果不设置name则为default对应的组件
+2. 在index.js(路由文件)中,引入需要的组件,components新增键值对(key:value),此处注意组件的复数
+
