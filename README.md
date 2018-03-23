@@ -126,3 +126,8 @@
 ## 14,编程式导航(与router-link不同)
 
 *  组件文件配置,export default新增methods方法,利用this.$router.go(-1)或this.$router.push('***')
+
+## 15,生产环境文件打包
+
+1. /config/index.js,assetsPublicPath对应的是资源公用路径,在build之前需要根据服务器结构修改,比如'./'
+2. $ npm run build 即可打包到dist目录下
